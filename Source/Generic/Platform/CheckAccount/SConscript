@@ -1,0 +1,5 @@
+Import('env')
+
+objects = env.Object(target = ['../../../../Build/obj/checkaccount.o'] , source = ['checkaccount.c'], CPPPATH = Split('../../../'))
+
+Return('objects')

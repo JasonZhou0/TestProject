@@ -1,0 +1,4 @@
+Import('env')
+
+objects = env.Object(target = ['../../../../Build/obj/display.o'] , source = ['display.c'], CPPPATH = Split('../../../'))
+Return('objects')
