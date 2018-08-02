@@ -9,9 +9,21 @@ env = Environment(tools = ['gcc','gnulink'],CC='Tools\mingw64\\bin\\gcc.exe')
 
 Export('env')
 
-Object = SConscript(['Source\\Generic\\Platform\\CheckAccount\\SConscript']) 
-Object += SConscript(['Source\\Generic\\Driver\\Display\\SConscript']) 
-Object += SConscript(['Source\\Generic\\Platform\\StartUp\\SConscript']) 
+def find_dir(dir_name):
+	firt = 0
+	for dirpath, dirnames, filenames in os.walk(dir_name):
+		for filename in filenames:
+			if ("SConscript" in filenames):
+				SConscript_path_file = os.path.join(dirpath,"SConscript")
+				if firt == 0:
+					Object = SConscript([SConscript_path_file])
+					firt = 1
+				else:
+					Object += SConscript([SConscript_path_file])
+				print(SConscript_path_file)
+				break
+
+find_dir(os.getcwd()+'\Source')
 
 TARGETNAME = 'Build\\bin\\TestCode.exe'
 # LIB # = Split('jsoncpp logger ACE basetool tinyxml pthread dl rt')
