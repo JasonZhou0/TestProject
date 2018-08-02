@@ -1,4 +1,4 @@
 Import('env')
 
-objects = env.Object(target = ['../../../../Build/obj/startup.o'] , source = ['startup.c'], CPPPATH = Split('../../../'))
+objects = env.Object(target = ['../../../../Build/obj/startup'] , source = ['startup.c'], CPPPATH = Split('../../../'))
 Return('objects')
