@@ -1,4 +1,10 @@
 Import('env')
+import os
 
-objects = env.Object(target = ['../../../../Build/obj/startup'] , source = ['startup.c'], CPPPATH = Split('../../../'))
+WorkSpacePath = env['WorkSpace']
+length = len(WorkSpacePath)
+SourcePath = os.getcwd()[length:]
+objects = env.Object(target = [WorkSpacePath+'/Build/obj'+SourcePath+'/startup'] , source = ['startup.c'], CPPPATH = Split(WorkSpacePath+'/Source/'))
+pass
+print('Compile',objects)
 Return('objects')
