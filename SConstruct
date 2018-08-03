@@ -4,7 +4,13 @@ import os
 
 print('scons: Reading SConscript files completed!\n')
 
-env = Environment(tools = ['gcc','gnulink'],CC='Tools\mingw64\\bin\\gcc.exe',SOURCE_DIRS=[os.getcwd()+'Source'],WorkSpace=os.getcwd())
+env = Environment(tools = ['gcc','gnulink'],
+						CC='Tools\mingw64\\bin\\gcc.exe',
+						AS='Tools\mingw64\\bin\\as.exe',
+						LD='Tools\mingw64\\bin\\ld.exe',
+						OBJCOPY='Tools\mingw64\\bin\\object.exe',
+						SOURCE_DIRS=[os.getcwd()+'Source'],
+						WorkSpace=os.getcwd())
 
 Export('env')
 
